@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STATS GETSET DATASET Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+
+
+
+
+</head>
+
+<body>
+<h1>STATS GETSET DATASET Extension Command</h1>
+
+<p>Open a dataset with a permanent dataset name and assign that name
+for the session and/or create a permanent dataset name for a SAV or ZSAV file</p>
+<div class="syntax">
+<p>STATS GETSET DATASET<br> 
+FILE = <em>file specification</em><br/>
+CONFLICT = NONAME<sup>&#42;&#42;</sup> or OVERRIDE<br/>
+ASSIGNCUSTOMDSN = <em>YES</em> or <em>NO</em><sup>&#42;&#42;</sup><br/>
+CUSTOMDSN = <em>dataset name</em><br/>
+ASSIGNSESSIONDSN = <em>YES</em> or <em>NO</em><sup>&#42;&#42;</sup><br/></p>
+<p>/HELP</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>/HELP displays this help and does nothing else.</p>
+
+
+<pre class="example"><code>
+STATS GETSET DATASET
+FILE = &quot;c:/data/mydata.sav&quot;
+CONFLICT = OVERRIDE.
+</code></pre>
+<pre class="example"><code>
+STATS GETSET DATASET  
+ASSIGNCUSTOMDSN = YES CUSTOMDSN = mydata.
+</code></pre>
+
+<p>
+Any data file opened or created in SPSS Statistics is a dataset.  
+It may or may not
+have a dataset name. A name allows it to be referred to in syntax in order
+to make it the active dataset or to perform other operations involving
+datasets.  A dataset that does not have a name will be closed if a 
+different dataset is made active.
+</p>
+<p>A dataset name is automatically assigned when data are opened via
+the user interface.  However, the name may be different 
+each time the data file is opened.  (Names are not automatically assigned when
+the data are read using syntax.)
+</p>
+This command provides a way to assign a permanent
+dataset name to an SPSS data file (.SAV or .ZSAV).  That name can be
+applied if the data file is opened using this command.
+</p>
+<p>The command provides two possible actions: 
+<ul>
+<li> assign a permanent
+dataset name to be saved when the dataset is written to a file, and </li>
+<li>open a data file applying the permanent dataset name, if any,
+to it</li>
+</ul>
+You can use either or both at the same time.
+</p>
+
+
+<p><strong>FILE</strong> specifies the name of an SAV or ZSAV
+data file to be opened.  If the file contains a permanent dataset
+name, that name is assigned to the opened dataset.</p>
+
+<p><strong>CONFLICT</strong> specifies what to do if the
+dataset name is already in use.  By default, no dataset name
+is assigned.  Specifying <em>OVERRIDE</em> causes the name
+to be transferred to the newly opened dataset.  Since the
+name is removed from the previous holder and the newly opened
+one becomes active, the other dataset is closed without
+saving any changes.  Taking the name of the active dataset
+is not considered a conflict.</p>
+
+<p>The remaining keywords are used to create a permanent dataset name.</p>
+
+<p><strong>ASSIGNCUSTOMDSN</strong> and <strong>ASSIGNSESSIONDSN</strong>
+specify that a custom dataset name or the current dataset name of
+the active dataset should be set as the permanent dataset name.
+It will be saved when the dataset is saved as an SAV or ZSAV file.</p>
+<p>The custom name to be assigned is specified with
+<strong>CUSTOMDSN</strong>.
+
+<p>&copy; Copyright IBM Corp. 1989, 2015</p>
+
+</body>
+
+</html>
+

@@ -1,0 +1,104 @@
+﻿<!--
+This file is a template for creating help files for custom dialogs.  
+
+-->
+<html>
+<head>
+<title>Open SPSS Data File with Dataset Name</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:110%; }
+BODY {font-family:Verdana, Arial, sans-serif;font-size:80%; }
+TABLE {font-size:100%;font-family:Verdana, Arial, sans-serif;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.step-glyph { font-family: Arial, Helvetica, sans-serif; }
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;font-family:"courier new",monospace; }
+
+/* inline tags */
+.code {font-family: Courier,fixed pitch;}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {font-family: Symbol}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Open an SPSS Dataset with a Dataset Name</h1>
+<p>
+Any data file opened or created in SPSS Statistics is a dataset.  
+It may or may not
+have a dataset name. A name allows it to be referred to in syntax in order
+to make it the active dataset or to perform other operations involving
+datasets.  A dataset that does not have a name will be closed if a 
+different dataset is made active.
+</p>
+<p>A dataset name is automatically assigned when data are opened via
+the user interface.  However, the name may be different each time the
+data file is opened.  This dialog provides a way to assign a permanent
+dataset name to an SPSS data file (.SAV or .ZSAV).  That name will be
+applied if the data file is opened using this dialog or is opened with
+the STATS GETSET DATASET command.
+</p>
+<p>This dialog provides two possible actions: 
+<ul>
+<li> assign a permanent
+dataset name to be saved when the dataset is written to a file, and </li>
+<li>open a data file applying the permanent dataset name, if any,
+to it</li>
+</ul>
+You can use either or both at the same time.
+</p>
+
+<p><span class="runinhead">Assign permanent dataset name</span> Use this
+section to assign a permanent name to the active dataset that will
+be saved when the dataset is saved as an SAV or ZSAV file.</p>
+
+<p><span class="runinhead">Dataset Name Source</span> If the active
+dataset already has a dataset name, you can set that as the permanent name.
+Alternatively, choose the second button and specify a permanent name
+in the Dataset Name field.  The dataset name within the current session
+will also be changed to the specified name.</p>
+
+<p><span class="runinhead">Open a File</span> Use this section to open
+a SAV or ZSAV file that has a permanent dataset name attribute and
+assign that dataset name in the current session.  If the file does not
+contain a permanent name, a name will be assigned for the session.</p>
+
+<p class="bullet">&bull; You can use 
+File > Display Data File Information > External File to see the saved name,
+which will be stored as the custom attribute named PermanentDSName.</p>
+
+<p><span class="runinhead">Dataset Name Conflicts</span> If the permanent
+name is already in use for another dataset when the file is opened,
+the conflict will be resolved according to this setting.  Choose the
+first button to not assign a name and the second to assign the
+name anyway, removing it from the other dataset, which will then
+not have a name and will be closed without saving any changes.
+Reassigning the name for the currently active dataset is not
+considered a conflict.</p>
+
+
+<h2>Additional Features</h2>
+<p>
+This dialog generates syntax for the STATS GETSET DATASET
+extension command.  To get the syntax help, use
+<span class="code">STATS GETSET DATASET /HELP.</span><br>
+or in Version 23 or later press F1 on the command name in the Syntax Editor.
+</p>
+<h2>Requirements</h2>
+<p>
+This command requires the Python Essentials
+extension command from the SPSS Community website 
+</p>
+</body>
+</html>
