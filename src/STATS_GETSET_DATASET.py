@@ -3,13 +3,13 @@
 # *
 # * IBM SPSS Products: Statistics Common
 # *
-# * (C) Copyright IBM Corp. 2015
+# * (C) Copyright IBM Corp. 1989, 2020
 # *
 # * US Government Users Restricted Rights - Use, duplication or disclosure
 # * restricted by GSA ADP Schedule Contract with IBM Corp. 
 # ************************************************************************/
 
-from __future__ import with_statement
+
 import spss, spssaux
 
 """STATS VALLBLS FROMDATA extension command"""
@@ -39,8 +39,8 @@ def doactions(filespec=None, conflict="noname", currentactivedsn=None):
             wingdbstub.debugger.StopDebug()
             time.sleep(1)
             wingdbstub.debugger.StartDebug()
-        import thread
-        wingdbstub.debugger.SetDebugThreads({thread.get_ident(): 1}, default_policy=0)
+        import _thread
+        wingdbstub.debugger.SetDebugThreads({_thread.get_ident(): 1}, default_policy=0)
         # for V19 use
         ##    ###SpssClient._heartBeat(False)
     except:
@@ -65,13 +65,13 @@ def doactions(filespec=None, conflict="noname", currentactivedsn=None):
         spss.Submit("""GET FILE="%s". """ % filespec)
         thedsn = spss.GetDataFileAttributes(customdsattr)
         if len(thedsn) == 0:
-            print _("The data file does not contain a permanent dataset name.  No session dataset name has been assigned.")
+            print(_("The data file does not contain a permanent dataset name.  No session dataset name has been assigned."))
         else:
             if thedsn[0].lower() in alldatasets:
                 if conflict != "override":
-                    print _("The permanent dataset name is already in use in this session. No session dataset name has been assigned.")
+                    print(_("The permanent dataset name is already in use in this session. No session dataset name has been assigned."))
                 else:
-                    print _("The dataset name has been removed from an already open dataset: %s") % thedsn[0]
+                    print(_("The dataset name has been removed from an already open dataset: %s") % thedsn[0])
                     spss.Submit("""DATASET NAME %s.""" % thedsn[0])
             
 def getAllDatasetNames():
@@ -97,7 +97,7 @@ def getAllDatasetNames():
 def Run(args):
     """Execute the STATS GETSAV DATASETextension command"""
 
-    args = args[args.keys()[0]]
+    args = args[list(args.keys())[0]]
 
     oobj = Syntax([
         Template("FILE", subc="",  ktype="literal", var="filespec"),
@@ -115,7 +115,7 @@ def Run(args):
         def _(msg):
             return msg
     # A HELP subcommand overrides all else
-    if args.has_key("HELP"):
+    if "HELP" in args:
         #print helptext
         helper()
     else:
@@ -135,7 +135,7 @@ def helper():
     # webbrowser.open seems not to work well
     browser = webbrowser.get()
     if not browser.open_new(helpspec):
-        print("Help file not found:" + helpspec)
+        print(("Help file not found:" + helpspec))
 try:    #override
     from extension import helper
 except:

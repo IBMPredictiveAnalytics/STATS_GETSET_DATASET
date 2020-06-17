@@ -2,7 +2,7 @@ Name: STATS GETSET DATASET
 Dialog-Specs: STATS_GETSET_DATASET.spd
 Command-Specs: STATS_GETSET_DATASET.xml
 Code-Files: STATS_GETSET_DATASET.py
-Misc-Files: markdown.html,extsyntax.css,IBMdialogicon.png
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
 Summary: Open an SPSS file and apply a permanent dataset name to the r
  esulting dataset
 Description: This command provides a way to assign a permanent dataset
@@ -12,8 +12,9 @@ Description: This command provides a way to assign a permanent dataset
  dataset name to be saved when the dataset is written to a file, and o
  pen a data file applying the permanent dataset name, if any, to it
 Author: JKP, IBM SPSS
-Version: 1.0.0
-Product-Version: 18
+Version: 2.0.0
+Product-Version: 24
 Date: 6/30/2015
 Categories: utility
 Plugins: Python
+Python-Version: 3
