@@ -1,4 +1,5 @@
 Name: STATS GETSET DATASET
+Display-Name: Set Dataset Name
 Dialog-Specs: STATS_GETSET_DATASET.spd
 Command-Specs: STATS_GETSET_DATASET.xml
 Code-Files: STATS_GETSET_DATASET.py
